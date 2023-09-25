@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public UnityAction<float> OnPlayerDamage;
+    public UnityAction<float> OnPlayerPower;
 
     private void Awake()
     {
@@ -21,8 +22,19 @@ public class GameManager : MonoBehaviour
         OnPlayerDamage.Invoke(damage);
     }
 
+    public void PlayerPower(float power)
+    {
+        //Notificar a todos cuanto poder tiene el jugador
+        OnPlayerPower.Invoke(power);
+    }
+
     public void AddObserver(UnityAction <float> action)
     {
         OnPlayerDamage += action;
+    }
+
+    public void AddObserver2(UnityAction <float> action)
+    {
+        OnPlayerPower += action;
     }
 }

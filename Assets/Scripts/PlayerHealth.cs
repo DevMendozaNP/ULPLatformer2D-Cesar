@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
         Enemy enemy = other.transform.GetComponent<Enemy>();
         if (enemy != null)
         {
-            Debug.Log("Hay colision con enemigo: " + enemy.damage);
             GameManager.Instance.PlayerDamage(enemy.damage);
         }   
     }
