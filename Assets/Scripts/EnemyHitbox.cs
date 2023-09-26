@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class EnemyHitbox : MonoBehaviour
 {
-    public float power = 5f;
-    //Cuanto se llenará la barra de poder
-    //del jugador con cada golpe
 
-    private void Start()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        GameManager.Instance.AddObserver2(PlayerPower);
-    }
-
-    private void PlayerPower(float power)
-    {
-        Debug.Log("Lo está golpeando.");
+        PlayerHit player = other.transform.GetComponent<PlayerHit>();
+        if (player != null)
+        {
+            GameManager.Instance.EnemyDamage(player.playerHitLevel);
+        }   
     }
 }

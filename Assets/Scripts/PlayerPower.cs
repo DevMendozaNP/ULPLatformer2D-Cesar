@@ -7,10 +7,10 @@ public class PlayerPower : MonoBehaviour
     //Identificar si el jugador golpeó al rival por arriba
     private void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyHitbox enemyHitbox = other.transform.GetComponent<EnemyHitbox>();
-        if (enemyHitbox != null)
+        EnemyPower enemyPower = other.transform.GetComponent<EnemyPower>();
+        if (enemyPower != null)
         {
-             GameManager.Instance.PlayerPower(enemyHitbox.power);
+             GameManager.Instance.PlayerPower(enemyPower.power);
         }
     }
 }

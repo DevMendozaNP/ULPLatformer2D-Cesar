@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public UnityAction<float> OnPlayerDamage;
     public UnityAction<float> OnPlayerPower;
+    public UnityAction<float> OnEnemyDamage;
 
     private void Awake()
     {
@@ -28,6 +29,12 @@ public class GameManager : MonoBehaviour
         OnPlayerPower.Invoke(power);
     }
 
+    public void EnemyDamage(float playerHitLevel)
+    {
+        //Notificar a los enemigos cuanto daño reciben
+        OnEnemyDamage.Invoke(playerHitLevel);
+    }
+
     public void AddObserver(UnityAction <float> action)
     {
         OnPlayerDamage += action;
@@ -36,5 +43,10 @@ public class GameManager : MonoBehaviour
     public void AddObserver2(UnityAction <float> action)
     {
         OnPlayerPower += action;
+    }
+
+    public void AddObserver3(UnityAction <float> action)
+    {
+        OnEnemyDamage += action;
     }
 }
