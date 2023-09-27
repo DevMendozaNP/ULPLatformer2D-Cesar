@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] 
     private TrailRenderer tr;
 
+    public PowerBar script;
 
 
     private void Start() 
@@ -232,9 +234,10 @@ public class PlayerMovement : MonoBehaviour
         //IsGrounded();
         WallSlide();
         Grounded();
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && script.slider.value >= 50) 
         {
             StartCoroutine(Dash());
+            script.slider.value = 0;
         }
         Debug.DrawRay(transform.position,new Vector2(dir,0)*10f, Color.red);
         Debug.DrawRay(transform.position,new Vector2(0f,-1f)*0.50f, Color.blue);

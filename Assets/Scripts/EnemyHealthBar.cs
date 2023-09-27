@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealthBar : MonoBehaviour
 {
 
-    private Slider slider;
+    public Slider slider;
 
     private void Awake()
     {
@@ -23,4 +23,5 @@ public class EnemyHealthBar : MonoBehaviour
     {
         slider.value -= playerHitLevel;
     }
+
 }

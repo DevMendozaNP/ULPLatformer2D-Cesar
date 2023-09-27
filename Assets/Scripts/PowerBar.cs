@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PowerBar : MonoBehaviour
 {
-    private Slider slider;
+    public Slider slider;
     
     private void Awake()
     {
-        slider = GetComponent<Slider>();
+        
     }
 
     private void Start()
