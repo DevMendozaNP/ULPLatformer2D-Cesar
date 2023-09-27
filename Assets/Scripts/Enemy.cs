@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     {
         healthBar.slider.value -= damage;
 
-        if (healthBar.slider.value <= 0)
+        if (healthBar.slider.value == 0)
         {
             Die();
         }

@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
         else
         {
             MenuPause.SetActive(false);
+            playerUIs.SetActive(true);
             isPaused = false;
             Time.timeScale = 1;
         }

@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     private void Update()
@@ -43,6 +44,10 @@ public class EnemyMovement : MonoBehaviour
         {
             player = hit.collider.transform;
             Attack();
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
         }
 
         if (ShouldFall())
@@ -86,5 +91,6 @@ public class EnemyMovement : MonoBehaviour
             speed,
             rb.velocity.y
         );
+        animator.SetBool("IsRunning", true);
     }
 }

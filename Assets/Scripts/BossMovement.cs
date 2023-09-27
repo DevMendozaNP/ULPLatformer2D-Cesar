@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
+public class BossMovement : MonoBehaviour
 {
     [SerializeField]
     private float rayDistance;
@@ -17,10 +17,12 @@ public class Boss : MonoBehaviour
     private Vector2 direction = Vector2.right;
     private Transform player;
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,6 +43,10 @@ public class Boss : MonoBehaviour
         {
             player = hit.collider.transform;
             Attack();
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
         }
 
         if(ShouldFall())
@@ -84,5 +90,6 @@ public class Boss : MonoBehaviour
             speed,
             rb.velocity.y
         );
+        animator.SetBool("IsRunning", true);
     }
 }
