@@ -35,13 +35,10 @@ public class PauseMenu : MonoBehaviour
     public void RestartOnClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
-        titleScreen.SetActive(false);
-        
     }
     
     public void QuitOnClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Application.Quit();
     }
 }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public UnityAction<float> OnPlayerDamage;
     public UnityAction<float> OnPlayerPower;
     public UnityAction<float> OnEnemyDamage;
+    public UnityAction<float> OnBossDamage;
 
     private void Awake()
     {
@@ -35,6 +36,12 @@ public class GameManager : MonoBehaviour
         OnEnemyDamage.Invoke(playerHitLevel);
     }
 
+    public void BossDamage(float playerHitLevel)
+    {
+        //Notificar al jefe cuanto daño recibe
+        OnEnemyDamage.Invoke(playerHitLevel);
+    }
+
     public void AddObserver(UnityAction <float> action)
     {
         OnPlayerDamage += action;
@@ -48,5 +55,10 @@ public class GameManager : MonoBehaviour
     public void AddObserver3(UnityAction <float> action)
     {
         OnEnemyDamage += action;
+    }
+
+    public void AddObserver4(UnityAction <float> action)
+    {
+        OnBossDamage += action;
     }
 }

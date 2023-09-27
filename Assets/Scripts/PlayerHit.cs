@@ -9,10 +9,16 @@ public class PlayerHit : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.AddObserver3(EnemyDamage);
+        GameManager.Instance.AddObserver4(BossDamage);
     }
 
     private void EnemyDamage(float damage)
     {
         //Debug.Log("Están golpeando al enemigo");
+    }
+
+    private void BossDamage(float damage)
+    {
+        //Debug.Log("Están golpeando al jefe)";
     }
 }

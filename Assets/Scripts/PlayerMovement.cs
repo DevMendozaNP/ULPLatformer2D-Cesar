@@ -234,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
         //IsGrounded();
         WallSlide();
         Grounded();
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && script.slider.value >= 50) 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && script.slider.value >= 30) 
         {
             StartCoroutine(Dash());
             script.slider.value = 0;

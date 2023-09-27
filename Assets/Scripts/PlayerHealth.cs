@@ -11,5 +11,11 @@ public class PlayerHealth : MonoBehaviour
         {
             GameManager.Instance.PlayerDamage(enemy.damage);
         }   
+
+        Boss boss = other.transform.GetComponent<Boss>();
+        if (boss != null)
+        {
+            GameManager.Instance.PlayerDamage(boss.damage);
+        } 
     }
 }
