@@ -2,58 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Animations;
 
-public class EnemyMovement : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     [SerializeField]
-    private float rayDistance = 3f;
-    
+    private float rayDistance;
+
     [SerializeField]
     private float speed = 4f;
     
-    [SerializeField] 
+    [SerializeField]
     private Transform raycastPoint;
 
     private Vector2 direction = Vector2.right;
     private Transform player;
     private Rigidbody2D rb;
-    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    
+
     private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(
             transform.position,
             direction,
-            rayDistance
+            3f
         );
 
         Debug.DrawRay(
             transform.position,
-            transform.right * rayDistance,
+            transform.right * 3f,
             Color.red
         );
-        
+
         if (hit)
         {
             player = hit.collider.transform;
             Attack();
         }
 
-        if (ShouldFall())
+        if(ShouldFall())
         {
             rb.velocity = new Vector2(
                 0f,
-                rb.velocity.y
+                rb.velocity.x
             );
         }
     }
-
+    
     private bool ShouldFall()
     {
         Vector2 dir = new Vector2(1f,-1f);
@@ -69,8 +67,8 @@ public class EnemyMovement : MonoBehaviour
             dir.normalized * 2f,
             Color.blue
         );
-        
-        if (hit)
+
+        if(hit)
         {
             return false;
         }

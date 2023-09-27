@@ -11,12 +11,15 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject Button1;
     public GameObject Button2;
+    public GameObject titleScreen;
+    public GameObject playerUIs;
 
     private void OnPause(InputValue value)
     {
         if (isPaused == false)
         {
             MenuPause.SetActive(true);
+            playerUIs.SetActive(false);
             isPaused = true;
             Time.timeScale = 0;
         }
@@ -32,10 +35,12 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
+        titleScreen.SetActive(false);
+        
     }
     
     public void QuitOnClick()
     {
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
