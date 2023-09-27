@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 470856079}
   - component: {fileID: 470856078}
   m_Layer: 0
-  m_Name: EnemyHitbox
+  m_Name: BossHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
